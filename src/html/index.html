@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Base 64 Converter</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="d-flex justify-content-center align-items-center mt-5">
+      <h1>Base 64 Converter</h1>
+    </div>
+    <div class="col-12 row mt-3 justify-content-center align-items-center">
+      <div class="col-6">
+        <label for="input">Encoded String:</label>
+        <input class="form-control" type="text" name="" id="input" />
+      </div>
+      <div class="col-3">
+        <label for="iterations">Number of Decodes:</label>
+        <input class="form-control" type="number" name="" id="iterations" />
+      </div>
+    </div>
+    <div class="d-flex justify-content-center align-items-center mt-4">
+      <button id="decode" class="btn btn-primary">Decode</button>
+    </div>
+    <div class="col-12 row mt-3 justify-content-center align-items-center">
+      <div class="col-9">
+        <label for="output">Decoded String:</label>
+        <input class="form-control" type="text" name="" id="output" disabled />
+      </div>
+    </div>
+  </body>
+  <script src="../../dist/decode.js"></script>
+</html>
