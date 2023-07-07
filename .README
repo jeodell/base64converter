@@ -1,0 +1,15 @@
+# Base64 Converter
+
+## Commands
+
+### Install
+
+```bash
+npx electron-packager . --overwrite
+```
+
+### Run
+
+```bash
+npm start
+```

@@ -1,13 +1,4 @@
 "use strict";
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 exports.__esModule = true;
 var electron_1 = require("electron");
 var path = require("path");
@@ -25,6 +16,7 @@ var createMainWindow = function () {
         title: 'Main',
         webPreferences: {
             nodeIntegration: true,
+            devTools: isDev,
             preload: path.join(__dirname, 'preload.js')
         }
     });
@@ -35,16 +27,8 @@ var createMainWindow = function () {
         mainWindow.webContents.openDevTools();
     }
 };
-var createAboutWindow = function () {
-    var aboutWindow = new electron_1.BrowserWindow({
-        height: 300,
-        width: 300,
-        title: 'About'
-    });
-    aboutWindow.loadFile(path.join(__dirname, '../src/html/about.html'));
-};
 // Explicit menu
-var menu = __spreadArray([
+var menu = [
     {
         label: 'File',
         submenu: [
@@ -61,20 +45,8 @@ var menu = __spreadArray([
                 }
             },
         ]
-    }
-], (!isMac
-    ? [
-        {
-            label: 'Help',
-            submenu: [
-                {
-                    label: 'About',
-                    click: createAboutWindow
-                },
-            ]
-        },
-    ]
-    : []), true);
+    },
+];
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 electron_1.app.whenReady().then(function () {

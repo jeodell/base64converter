@@ -17,6 +17,7 @@ const createMainWindow = (): void => {
     title: 'Main',
     webPreferences: {
       nodeIntegration: true,
+      devTools: isDev,
       preload: path.join(__dirname, 'preload.js'),
     },
   })
@@ -28,16 +29,6 @@ const createMainWindow = (): void => {
   if (isDev) {
     mainWindow.webContents.openDevTools()
   }
-}
-
-const createAboutWindow = (): void => {
-  const aboutWindow = new BrowserWindow({
-    height: 300,
-    width: 300,
-    title: 'About',
-  })
-
-  aboutWindow.loadFile(path.join(__dirname, '../src/html/about.html'))
 }
 
 // Explicit menu
@@ -59,19 +50,6 @@ const menu = [
       },
     ],
   },
-  ...(!isMac
-    ? [
-        {
-          label: 'Help',
-          submenu: [
-            {
-              label: 'About',
-              click: createAboutWindow,
-            },
-          ],
-        },
-      ]
-    : []),
 ]
 
 // This method will be called when Electron has finished
